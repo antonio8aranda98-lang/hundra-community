@@ -1,0 +1,12 @@
+import { env } from 'cloudflare:workers';
+import { initialContent, type Content } from './content';
+export const runtime = () => env as unknown as { BUCKET: R2Bucket; ADMIN_PASSWORD: string; SESSION_SECRET: string };
+export const json = (data: unknown, status = 200, extra: Record<string,string> = {}) => Response.json(data, { status, headers: { 'Cache-Control': 'no-store', ...extra } });
+export function sameOrigin(req: Request) { return req.headers.get('origin') === new URL(req.url).origin; }
+export async function digest(value: string) { const hash = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(value)); return Array.from(new Uint8Array(hash), x => x.toString(16).padStart(2,'0')).join(''); }
+export async function equal(a: string, b: string) { const [aa,bb] = await Promise.all([digest(a),digest(b)]); let difference=0; for(let i=0;i<aa.length;i++) difference |= aa.charCodeAt(i)^bb.charCodeAt(i); return difference===0; }
+async function signature(value: string) { const secret=runtime().SESSION_SECRET; if(!secret) throw new Error('Falta configurar la sesión'); const key=await crypto.subtle.importKey('raw',new TextEncoder().encode(secret),{name:'HMAC',hash:'SHA-256'},false,['sign']); const signed=await crypto.subtle.sign('HMAC',key,new TextEncoder().encode(value)); return Array.from(new Uint8Array(signed), x=>x.toString(16).padStart(2,'0')).join(''); }
+export async function sessionToken() { const payload=`${Date.now()+8*60*60*1000}.${crypto.randomUUID()}`; return `${payload}.${await signature(payload)}`; }
+export async function authorized(req: Request) { if(!runtime().SESSION_SECRET) return false; const token=(req.headers.get('cookie')||'').split('; ').find(x=>x.startsWith('hundra_admin='))?.slice(13); if(!token) return false; const [expires,nonce,sig]=token.split('.'); if(!expires||!nonce||!sig||Number(expires)<Date.now()||Number(expires)>Date.now()+8*60*60*1000) return false; return equal(sig,await signature(`${expires}.${nonce}`)); }
+export function sessionCookie(req: Request, token: string, age=28800) { return `hundra_admin=${token}; HttpOnly; SameSite=Strict; Path=/; Max-Age=${age}${new URL(req.url).protocol==='https:'?'; Secure':''}`; }
+export async function readContent(): Promise<{data: Content; etag: string}> { const object=await runtime().BUCKET.get('content/current.json'); return object?{data:await object.json<Content>(),etag:object.etag}:{data:structuredClone(initialContent),etag:'initial'}; }

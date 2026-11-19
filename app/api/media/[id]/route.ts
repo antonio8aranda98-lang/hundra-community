@@ -1,0 +1,2 @@
+import { runtime } from '@/lib/server';
+export async function GET(_req: Request,{params}:{params:Promise<{id:string}>}) { const {id}=await params;if(!/^[a-f0-9-]+\.(png|jpg|webp)$/.test(id))return new Response('No encontrado',{status:404}); const object=await runtime().BUCKET.get(`media/${id}`);if(!object)return new Response('No encontrado',{status:404});return new Response(object.body,{headers:{'Content-Type':object.httpMetadata?.contentType||'application/octet-stream','Cache-Control':'public,max-age=31536000,immutable','X-Content-Type-Options':'nosniff'}}); }
