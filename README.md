@@ -24,7 +24,7 @@ El servidor se ejecuta como Cloudflare Worker con Vinext/React. Conserva la inte
 
 La publicación se realiza mediante Sites, después de sincronizar y guardar una versión del código. GitHub conserva una copia del código; un cambio en GitHub por sí solo no despliega esta app. La edición semanal en el panel sí actualiza directamente el contenido sin desplegar de nuevo.
 
-`hundracommunity.app` es el dominio previsto. Su registro y conexión DNS están pendientes: este repositorio no acredita que el dominio esté comprado ni disponible. La dirección provisional se documenta en la guía.
+App pública: https://hundracommunity.app. Panel: https://hundracommunity.app/admin. Dominio registrado en Hostinger, con DNS y HTTPS activos verificados el 19 de noviembre de 2026. La dirección de plataforma https://hundra-community.opalescentpaper1.chatgpt.site sigue disponible.
 
 ## Operación
 

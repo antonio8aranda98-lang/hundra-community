@@ -1,8 +1,8 @@
 # Editar HUNDRA Community
 
-App provisional: https://hundra-community.opalescentpaper1.chatgpt.site
+App: https://hundracommunity.app
 
-Panel: https://hundra-community.opalescentpaper1.chatgpt.site/admin
+Panel: https://hundracommunity.app/admin
 
 La contraseña inicial está en el archivo local `ACCESO-ANTONIO.txt`, excluido de GitHub. Guárdala en tu gestor de contraseñas.
 
@@ -52,4 +52,4 @@ La app es pública y no pide una cuenta a las familias. Publica únicamente los 
 
 Exporta una copia desde el panel después de cambios importantes. El servidor conserva también versiones anteriores de las publicaciones. Si otro editor guarda mientras estás editando, el panel te avisará para que recargues y no sobrescribas sus cambios.
 
-El dominio `hundracommunity.app` todavía tiene que comprarse y conectarse. Al usar después el dominio definitivo, conviene instalar la app desde esa dirección.
+El dominio `hundracommunity.app` está registrado en Hostinger y conectado a la app con HTTPS desde el 19 de noviembre de 2026. Instala y comparte la app desde esa dirección. La primera vez que abras el panel desde el dominio definitivo tendrás que introducir tu contraseña, aunque ya hayas entrado en la dirección provisional.
