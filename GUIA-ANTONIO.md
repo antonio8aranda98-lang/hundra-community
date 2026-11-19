@@ -24,19 +24,17 @@ Los reconocimientos de la semana y del mes, la última edición de News y la new
 
 **Destacar en la portada** da prioridad a esa publicación en Inicio. Si hay varias destacadas, se muestra la más reciente según su fecha. Para retirar una publicación, edítala, desmarca su visibilidad y guarda. No hace falta borrar su historia.
 
-## Actividades e inscripciones
+## Actividades y comunicación con las familias
 
 Crea una publicación en Quedadas, Torneos, Charlas o Calendario anual. Añade las fechas y el lugar. Si no hay una hora confirmada, marca **Sin hora concreta**. Si todavía no conoces el día, deja la fecha vacía y completa **Mes previsto**. Si es un periodo de varios meses, indica también **Hasta el mes**. Aparecerá como un aviso bajo esos meses en la vista anual, sin asignarle un día inventado.
 
-Activa **Abrir formulario de inscripción** para que las familias puedan apuntarse dentro de la app. Las solicitudes se guardan en **Inscripciones**, donde puedes revisarlas y marcar si ya has contactado. No se envía un aviso por correo: revisa esa sección cuando abras inscripciones. Una solicitud recibida no confirma una plaza.
+Las fichas de actividades muestran únicamente el aviso **«Avisadnos por el grupo de WhatsApp»**. La app no recoge inscripciones ni envía mensajes: cada familia utiliza su grupo habitual para avisar al equipo.
 
-Si prefieres un formulario externo, pega su enlace HTTPS en el campo correspondiente. Las charlas pueden enlazar la sala de conexión o la página de inscripción.
+Las fechas con hora se muestran en la zona de Madrid.
 
-Las familias pueden guardar los eventos con fecha en su propio calendario. Las fechas con hora se muestran en la zona de Madrid.
+## Reconocimiento mensual
 
-## Regalo mensual
-
-En Ajustes puedes poner el WhatsApp de HUNDRA con prefijo de país, sin `+` ni espacios. El jugador del mes verá **Pedir mi regalo**, con un mensaje preparado. También se puede usar un enlace directo de WhatsApp en la propia publicación.
+El jugador del mes muestra el mismo aviso para que os contacte por el grupo de WhatsApp. No hay botón de solicitar regalo ni mensajes privados preparados.
 
 ## Novedades mensuales
 

@@ -1,7 +1,41 @@
 'use client';
-import { useState } from 'react';
-import { CalendarDays, Newspaper, Trophy, Mic, MapPin, Gift, ChevronRight, CalendarPlus, Share2, Sparkles, Check } from 'lucide-react';
-import RegistrationForm from './registration-form';
-import { categories, isEvent, dateLabel, safeURL, type Post } from '@/lib/content';
-function calendarFile(p:Post){const escape=(v:string)=>v.replace(/\\/g,'\\\\').replace(/\n/g,'\\n').replace(/,/g,'\\,').replace(/;/g,'\\;');const format=(date:string)=>new Date(date).toISOString().replace(/[-:]/g,'').replace(/\.\d{3}/,'');const text=['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//HUNDRA//Community//ES','BEGIN:VEVENT',`UID:${p.id}@hundracommunity.app`,`DTSTAMP:${format(new Date().toISOString())}`,p.allDay?`DTSTART;VALUE=DATE:${p.date.slice(0,10).replace(/-/g,'')}`:`DTSTART:${format(p.date)}`,p.allDay?`DTEND;VALUE=DATE:${new Date(Date.parse(p.endDate||p.date)+86400000).toISOString().slice(0,10).replace(/-/g,'')}`:`DTEND:${format(p.endDate||new Date(Date.parse(p.date)+3600000).toISOString())}`,`SUMMARY:${escape(p.title)}`,`DESCRIPTION:${escape(p.summary)}`,`LOCATION:${escape(p.location)}`,'END:VEVENT','END:VCALENDAR'].join('\r\n');const url=URL.createObjectURL(new Blob([text],{type:'text/calendar;charset=utf-8'}));const a=document.createElement('a');a.href=url;a.download='hundra-evento.ics';a.click();URL.revokeObjectURL(url);}
-export default function PostCard({post:p,whatsapp}:{post:Post;whatsapp:string}){const [copied,setCopied]=useState(false);const category=categories.find(c=>c.id===p.category);const gift=p.category==='mes'&&(p.url.includes('wa.me/')?safeURL(p.url):whatsapp?`https://wa.me/${whatsapp}?text=${encodeURIComponent(`Hola, soy ${p.player||'el jugador del mes'} y me gustaría solicitar mi regalo por ${p.title}.`)}`:'');const open=p.registrationOpen&&isEvent(p.category)&&(!p.endDate||Date.parse(p.endDate)+86400000>=Date.now());return <article className={`post-card category-${p.category}`} id={p.id}><div className="post-header"><div className="post-category"><span className="category-icon">{['semana','mes'].includes(p.category)?<Trophy size={17}/>:p.category==='charlas'?<Mic size={17}/>:isEvent(p.category)?<CalendarDays size={17}/>:p.category==='nuevo'?<Sparkles size={17}/>:<Newspaper size={17}/>}</span><div><span>{category?.label}</span>{p.date&&<time dateTime={p.date}>{dateLabel(p.date)}{p.endDate&&p.endDate!==p.date?` – ${dateLabel(p.endDate)}`:''}</time>}</div></div>{open&&<span className="open-badge">Inscripciones abiertas</span>}</div><div className="post-title"><h2>{p.title}</h2>{p.player&&<p className="player-name">{p.player}</p>}{p.summary&&<p className="post-summary">{p.summary}</p>}</div>{p.image&&<div className="post-image"><img src={p.image} alt={`${category?.label}: ${p.player||p.title}`} loading="lazy" decoding="async"/></div>}<div className="post-content">{isEvent(p.category)&&(p.location||p.date&&!p.allDay)&&<div className="event-meta">{p.location&&<span><MapPin size={15}/>{p.location}</span>}{p.date&&!p.allDay&&<span><CalendarDays size={15}/>{new Date(p.date).toLocaleTimeString('es-ES',{hour:'2-digit',minute:'2-digit',timeZone:'Europe/Madrid'})} · Madrid</span>}</div>}<div className="post-body">{p.body.split(/\n\s*\n/).map((text,i)=>{const lines=text.split('\n');const isName=p.category==='news'&&lines.length>1&&lines[0].length<65;return <p key={i}>{isName?<><strong>{lines[0]}</strong><br/>{lines.slice(1).join('\n')}</>:text}</p>;})}</div><div className="post-actions">{gift?<a href={gift} target="_blank" rel="noopener noreferrer" className="button navy"><Gift size={17}/>Pedir mi regalo</a>:safeURL(p.url)&&<a href={safeURL(p.url)} target="_blank" rel="noopener noreferrer" className="button navy">{isEvent(p.category)?'Información de la actividad':'Más información'}</a>}{isEvent(p.category)&&p.date&&<button className="action-button" onClick={()=>calendarFile(p)}><CalendarPlus size={18}/><span>Guardar fecha</span></button>}<button className="action-button share-button" aria-label={`Compartir ${p.title}`} onClick={async()=>{const url=`${location.origin}/?publicacion=${p.id}`;try{if(navigator.share)await navigator.share({title:p.title,url});else{await navigator.clipboard.writeText(url);setCopied(true);setTimeout(()=>setCopied(false),2500);}}catch{}}}>{copied?<Check size={18}/>:<Share2 size={18}/>}<span>{copied?'Copiado':'Compartir'}</span></button></div>{open&&<details className="registration-details"><summary>Solicitar inscripción <ChevronRight size={18}/></summary><RegistrationForm post={p}/></details>}</div></article>;}
+import { CalendarDays, Newspaper, Trophy, Mic, MapPin, Sparkles } from 'lucide-react';
+import GroupWhatsAppNotice from './group-whatsapp-notice';
+import { categories, isEvent, dateLabel, type Post } from '@/lib/content';
+
+export default function PostCard({ post: p }: { post: Post }) {
+  const category = categories.find(c => c.id === p.category);
+  return (
+    <article className={`post-card category-${p.category}`} id={p.id}>
+      <div className="post-header">
+        <div className="post-category">
+          <span className="category-icon">
+            {['semana', 'mes'].includes(p.category) ? <Trophy size={17} /> : p.category === 'charlas' ? <Mic size={17} /> : isEvent(p.category) ? <CalendarDays size={17} /> : p.category === 'nuevo' ? <Sparkles size={17} /> : <Newspaper size={17} />}
+          </span>
+          <div>
+            <span>{category?.label}</span>
+            {p.date && <time dateTime={p.date}>{dateLabel(p.date)}{p.endDate && p.endDate !== p.date ? ` – ${dateLabel(p.endDate)}` : ''}</time>}
+          </div>
+        </div>
+      </div>
+      <div className="post-title">
+        <h2>{p.title}</h2>
+        {p.player && <p className="player-name">{p.player}</p>}
+        {p.summary && <p className="post-summary">{p.summary}</p>}
+      </div>
+      {p.image && <div className="post-image"><img src={p.image} alt={`${category?.label}: ${p.player || p.title}`} loading="lazy" decoding="async" /></div>}
+      <div className="post-content">
+        {isEvent(p.category) && (p.location || p.date && !p.allDay) && <div className="event-meta">
+          {p.location && <span><MapPin size={15} />{p.location}</span>}
+          {p.date && !p.allDay && <span><CalendarDays size={15} />{new Date(p.date).toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit', timeZone: 'Europe/Madrid' })} · Madrid</span>}
+        </div>}
+        <div className="post-body">{p.body.split(/\n\s*\n/).map((text, i) => {
+          const lines = text.split('\n');
+          const isName = p.category === 'news' && lines.length > 1 && lines[0].length < 65;
+          return <p key={i}>{isName ? <><strong>{lines[0]}</strong><br />{lines.slice(1).join('\n')}</> : text}</p>;
+        })}</div>
+        {(isEvent(p.category) || p.category === 'mes') && <GroupWhatsAppNotice />}
+      </div>
+    </article>
+  );
+}

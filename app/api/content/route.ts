@@ -1,6 +1,6 @@
 import { authorized, json, readContent, runtime, sameOrigin } from '@/lib/server';
 import { categories, safeURL, type Content } from '@/lib/content';
-export async function GET(req: Request) { try { const {data,etag}=await readContent(); if(!await authorized(req))data.posts=data.posts.filter(p=>p.published); return json({...data,revision:etag},200,{ETag:`"${etag}"`}); }catch { return json({error:'No se ha podido cargar el contenido. Inténtalo de nuevo.'},503); } }
+export async function GET(req: Request) { try { const {data,etag}=await readContent(); if(!await authorized(req)){data.posts=data.posts.filter(p=>p.published).map(p=>({...p,registrationOpen:false,url:''}));data.settings={...data.settings,whatsapp:''};} return json({...data,revision:etag},200,{ETag:`"${etag}"`}); }catch { return json({error:'No se ha podido cargar el contenido. Inténtalo de nuevo.'},503); } }
 export async function PUT(req: Request) {
  if(!sameOrigin(req)||!await authorized(req))return json({error:'Inicia sesión para editar.'},403);
  if(Number(req.headers.get('content-length'))>1000000)return json({error:'Contenido demasiado grande.'},413);
@@ -13,6 +13,7 @@ export async function PUT(req: Request) {
  for(const p of data.posts){
   if(!p||!validText(p.id,50)||!p.id||ids.has(p.id)||!categories.some(c=>c.id===p.category)||!validText(p.title,180)||!p.title.trim()||!validText(p.summary,500)||!validText(p.body,30000)||!validText(p.player,150)||!validText(p.location,250)||!validText(p.image,200)||!validText(p.url,2000)||typeof p.published!=='boolean'||typeof p.featured!=='boolean'||typeof p.allDay!=='boolean'||typeof p.registrationOpen!=='boolean'||![p.date,p.endDate].every(d=>typeof d==='string'&&(!d||(!isNaN(Date.parse(d))&&d.length<40)))|| (p.url&&!safeURL(p.url)) || (p.image&&!/^\/api\/media\/[a-f0-9-]+\.(png|jpg|webp)$/.test(p.image)) || (p.endDate&&(!p.date||Date.parse(p.endDate)<Date.parse(p.date))))return json({error:'Revisa los campos, los enlaces HTTPS y las fechas de las publicaciones.'},400);
   if((p.month!==undefined&&(!validText(p.month,7)||(p.month&&!/^\d{4}-(0[1-9]|1[0-2])$/.test(p.month))))||(p.endMonth!==undefined&&(!validText(p.endMonth,7)||(p.endMonth&&(!p.month||!/^\d{4}-(0[1-9]|1[0-2])$/.test(p.endMonth)||p.endMonth<p.month)))))return json({error:'Revisa los meses previstos de las actividades.'},400);
+  p.registrationOpen=false;
   ids.add(p.id);
  }
  const current=await readContent(); if((suppliedRevision??req.headers.get('if-match')?.replace(/^"|"$/g,''))!==current.etag)return json({error:'Hay cambios más recientes. Recarga el panel antes de guardar.'},409);

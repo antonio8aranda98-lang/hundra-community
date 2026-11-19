@@ -8,9 +8,9 @@ App pública e instalable para jugadores y familias de HUNDRA Sports. Negro, bla
 - News con el diseño completo y el texto de cada publicación.
 - Calendario de temporada del 1 de septiembre de 2026 al 31 de agosto de 2027, con doce meses, fechas señaladas e información al pasar el ratón o enfocar con teclado.
 - Al pulsar una fecha se abre su ficha de torneo, quedada, gira o charla. Estas actividades no tienen pestañas visibles en la navegación.
-- Formularios propios de inscripción; las solicitudes se consultan en `/admin/inscripciones`.
-- Premio mensual con enlace a WhatsApp configurable.
-- Instalación PWA con estilo iOS, publicaciones completas sin ventanas de detalle, enlaces compartibles y descarga de eventos `.ics`.
+- App informativa: las actividades y el jugador del mes indican «Avisadnos por el grupo de WhatsApp».
+- Sin formularios públicos, solicitudes de regalos ni enlaces de gestión directa. El receptor de inscripciones públicas está desactivado.
+- Instalación PWA con estilo iOS, publicaciones completas sin ventanas de detalle, calendario interactivo para consultar actividades.
 
 Antonio edita en `/admin`: crea, duplica, sube imágenes, guarda borradores y publica. La contraseña y los datos de las familias no forman parte de este repositorio. El contenido y las imágenes editoriales se guardan en almacenamiento privado R2; solo las publicaciones activas se sirven por la API pública. El código fuente público y el contenido editorial son independientes.
 
@@ -28,11 +28,9 @@ La publicación se realiza mediante Sites, después de sincronizar y guardar una
 
 ## Operación
 
-Sesión de edición HttpOnly, SameSite y caducidad de ocho horas; las escrituras exigen sesión y origen de la app. Se limitan los intentos de acceso y formularios por IP. La publicación usa ETag para impedir que dos ediciones se sobrescriban. Cada guardado conserva una versión anterior del contenido en R2; esto no sustituye un backup externo independiente. Exportación manual del contenido desde el panel.
+Sesión de edición HttpOnly, SameSite y caducidad de ocho horas; las escrituras exigen sesión y origen de la app. Se limitan los intentos de acceso al panel por IP. La publicación usa ETag para impedir que dos ediciones se sobrescriban. Cada guardado conserva una versión anterior del contenido en R2; esto no sustituye un backup externo independiente. Exportación manual del contenido desde el panel.
 
-Las inscripciones son solicitudes pendientes de revisión, no reservas confirmadas. No hay envío automático de correos ni newsletter por email: la sección de novedades mensuales se publica dentro de la app. La ficha de cada actividad puede enlazar también un formulario o información externa.
-
-Para solicitar una corrección o retirada de una inscripción, las familias contactan con HUNDRA. El panel permite marcar solicitudes como contactadas o canceladas; la eliminación definitiva y la política de conservación deben gestionarse antes de una operación sostenida con datos reales.
+Las familias consultan el contenido y gestionan cualquier interés o consulta avisando en su grupo habitual de WhatsApp. La newsletter mensual se publica dentro de la app y no envía correos. El histórico privado de solicitudes anteriores se conserva para Antonio; no se aceptan nuevas inscripciones en la web.
 
 La app necesita conexión para cargar noticias y datos actuales. Sin conexión muestra una página de aviso; no almacena en caché el panel ni los datos de las familias.
 
