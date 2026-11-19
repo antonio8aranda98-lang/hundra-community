@@ -10,7 +10,7 @@ La contraseña inicial está en el archivo local `ACCESO-ANTONIO.txt`, excluido 
 
 El calendario anual de septiembre de 2026 a agosto de 2027 aparece siempre en Inicio. Los botones superiores e inferiores son accesos a bloques de esa misma página: calendario, jugadores, News y novedades. No hay pestañas visibles de torneos, quedadas o charlas. Las fechas y los avisos mensuales del calendario abren directamente la ficha de cada actividad.
 
-Los reconocimientos de la semana y del mes, la última edición de News y la newsletter mensual se muestran completos en Inicio. Las ediciones anteriores de noticias y newsletters se conservan en su archivo.
+Los reconocimientos de la semana y del mes, la última edición de News y la newsletter mensual se muestran completos en Inicio. Las ediciones anteriores de noticias y newsletters se conservan en su archivo. Al final de Inicio aparece el próximo torneo con su diseño y texto completos; **Ver torneos anteriores** abre el archivo de torneos ya finalizados. Las fechas de inicio y fin determinan cuándo pasan a ese archivo.
 
 ## Publicar cada semana
 
