@@ -6,6 +6,12 @@ Panel: https://hundra-community.opalescentpaper1.chatgpt.site/admin
 
 La contraseña inicial está en el archivo local `ACCESO-ANTONIO.txt`, excluido de GitHub. Guárdala en tu gestor de contraseñas.
 
+## Cómo se organiza Inicio
+
+El calendario anual de septiembre de 2026 a agosto de 2027 aparece siempre en Inicio. Los botones superiores e inferiores son accesos a bloques de esa misma página: calendario, jugadores, News y novedades. No hay pestañas visibles de torneos, quedadas o charlas. Las fechas y los avisos mensuales del calendario abren directamente la ficha de cada actividad.
+
+Los reconocimientos de la semana y del mes, la última edición de News y la newsletter mensual se muestran completos en Inicio. Las ediciones anteriores de noticias y newsletters se conservan en su archivo.
+
 ## Publicar cada semana
 
 1. Entra al panel y pulsa **Nueva publicación**. También puedes duplicar una anterior.
@@ -20,7 +26,7 @@ La contraseña inicial está en el archivo local `ACCESO-ANTONIO.txt`, excluido 
 
 ## Actividades e inscripciones
 
-Crea una publicación en Quedadas, Torneos, Charlas o Calendario anual. Añade las fechas y el lugar. Si no hay una hora confirmada, marca **Sin hora concreta**. Si todavía no conoces la fecha exacta, deja la fecha vacía y explica el periodo en el título y el texto.
+Crea una publicación en Quedadas, Torneos, Charlas o Calendario anual. Añade las fechas y el lugar. Si no hay una hora confirmada, marca **Sin hora concreta**. Si todavía no conoces el día, deja la fecha vacía y completa **Mes previsto**. Si es un periodo de varios meses, indica también **Hasta el mes**. Aparecerá como un aviso bajo esos meses en la vista anual, sin asignarle un día inventado.
 
 Activa **Abrir formulario de inscripción** para que las familias puedan apuntarse dentro de la app. Las solicitudes se guardan en **Inscripciones**, donde puedes revisarlas y marcar si ya has contactado. No se envía un aviso por correo: revisa esa sección cuando abras inscripciones. Una solicitud recibida no confirma una plaza.
 

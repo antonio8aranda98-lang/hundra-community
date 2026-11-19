@@ -4,10 +4,10 @@ App pública e instalable para jugadores y familias de HUNDRA Sports. Negro, bla
 
 ## Uso
 
-- Inicio con noticias destacadas, agenda y reconocimientos.
+- Inicio reúne el calendario anual completo, jugador de la semana, jugador del mes, News y newsletter mensual.
 - News con el diseño completo y el texto de cada publicación.
-- Agenda: calendario anual, quedadas, torneos y charlas.
-- Comunidad: jugador de la semana, jugador del mes y novedades mensuales.
+- Calendario de temporada del 1 de septiembre de 2026 al 31 de agosto de 2027, con doce meses, fechas señaladas e información al pasar el ratón o enfocar con teclado.
+- Al pulsar una fecha se abre su ficha de torneo, quedada, gira o charla. Estas actividades no tienen pestañas visibles en la navegación.
 - Formularios propios de inscripción; las solicitudes se consultan en `/admin/inscripciones`.
 - Premio mensual con enlace a WhatsApp configurable.
 - Instalación PWA con estilo iOS, publicaciones completas sin ventanas de detalle, enlaces compartibles y descarga de eventos `.ics`.
@@ -18,7 +18,7 @@ Consulta [GUIA-ANTONIO.md](GUIA-ANTONIO.md) para la edición semanal.
 
 ## Desarrollo
 
-Node.js >=22.13 y npm. `npm run install:ci`, `npm run dev`, `npx tsc --noEmit`, `npm run build`.
+Node.js >=22.13 y npm. `npm run install:ci`, `npm run dev`, `npx tsc --noEmit`, `node scripts/check-season.mjs`, `npm run build`.
 
 El servidor se ejecuta como Cloudflare Worker con Vinext/React. Conserva la integración de Sites en `vite.config.ts`. El binding R2 `BUCKET` se declara en `.openai/hosting.json`. Configura `ADMIN_PASSWORD` y `SESSION_SECRET` como secretos del servidor; en local se pueden definir en `.dev.vars`, que está ignorado por Git.
 
