@@ -8,7 +8,9 @@ App pública e instalable para jugadores y familias de HUNDRA Sports. Negro, bla
 - News con el diseño completo y el texto de cada publicación.
 - Calendario de temporada del 1 de septiembre de 2026 al 31 de agosto de 2027, con doce meses, fechas señaladas e información al pasar el ratón o enfocar con teclado.
 - Al pulsar una fecha se abre su ficha de torneo, quedada, gira o charla. Estas actividades no tienen pestañas visibles en la navegación.
-- App informativa: las actividades y el jugador del mes indican «Avisadnos por el grupo de WhatsApp».
+- Avisos de WhatsApp según la sección, sin aviso en giras ni actividades de empresa.
+- HUNDRA Performance enlaza el formulario externo para activar o actualizar el planning físico.
+- Los torneos permiten adjuntar hasta 10 PDF de 10 MB y abrirlos desde sus publicaciones; los PDF de borradores requieren sesión de edición.
 - Sin formularios públicos, solicitudes de regalos ni enlaces de gestión directa. El receptor de inscripciones públicas está desactivado.
 - Instalación PWA con estilo iOS, publicaciones completas sin ventanas de detalle, calendario interactivo para consultar actividades.
 

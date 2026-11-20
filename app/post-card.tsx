@@ -1,5 +1,5 @@
 'use client';
-import { CalendarDays, Newspaper, Trophy, Mic, MapPin, Sparkles } from 'lucide-react';
+import { CalendarDays, Newspaper, Trophy, Mic, MapPin, Sparkles, FileText } from 'lucide-react';
 import GroupWhatsAppNotice from './group-whatsapp-notice';
 import { categories, isEvent, dateLabel, type Post } from '@/lib/content';
 
@@ -34,7 +34,8 @@ export default function PostCard({ post: p }: { post: Post }) {
           const isName = p.category === 'news' && lines.length > 1 && lines[0].length < 65;
           return <p key={i}>{isName ? <><strong>{lines[0]}</strong><br />{lines.slice(1).join('\n')}</> : text}</p>;
         })}</div>
-        {(isEvent(p.category) || p.category === 'mes') && <GroupWhatsAppNotice />}
+        {p.category === 'torneos' && !!p.attachments?.length && <section className="tournament-documents" aria-label="Documentos del torneo"><h3>Documentos del torneo</h3>{p.attachments.map(document => <a key={document.url} href={document.url} target="_blank" rel="noopener noreferrer" className="document-link"><FileText size={23} aria-hidden="true" /><span><strong>{document.name}</strong><small>Ver PDF · Se abre en otra pestaña</small></span></a>)}</section>}
+        <GroupWhatsAppNotice post={p} />
       </div>
     </article>
   );

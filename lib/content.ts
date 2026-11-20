@@ -9,7 +9,8 @@ export const categories = [
   { id: 'calendario', label: 'Calendario anual', description: 'El año de HUNDRA, en un solo lugar.', group: 'agenda' },
 ] as const;
 export type Category = typeof categories[number]['id'];
-export type Post = { id: string; category: Category; title: string; summary: string; body: string; image: string; published: boolean; date: string; endDate: string; location: string; url: string; player: string; featured: boolean; allDay: boolean; registrationOpen: boolean; month?: string; endMonth?: string; updatedAt: string };
+export type Attachment = { name: string; url: string };
+export type Post = { id: string; category: Category; title: string; summary: string; body: string; image: string; published: boolean; date: string; endDate: string; location: string; url: string; player: string; featured: boolean; allDay: boolean; registrationOpen: boolean; month?: string; endMonth?: string; attachments?: Attachment[]; updatedAt: string };
 export type Settings = { welcome: string; introduction: string; whatsapp: string; contactEmail: string; coverImage?: string };
 export type Content = { settings: Settings; posts: Post[] };
 export const initialContent: Content = { settings: { welcome: 'Tu comunidad. Tu equipo.', introduction: 'Un lugar para estar cerca. Las historias de nuestros jugadores, los próximos encuentros y todo lo que nos hace HUNDRA.', whatsapp: '', contactEmail: '' }, posts: [] };

@@ -28,13 +28,21 @@ Los reconocimientos de la semana y del mes, la última edición de News y la new
 
 Crea una publicación en Quedadas, Torneos, Charlas o Calendario anual. Añade las fechas y el lugar. Si no hay una hora confirmada, marca **Sin hora concreta**. Si todavía no conoces el día, deja la fecha vacía y completa **Mes previsto**. Si es un periodo de varios meses, indica también **Hasta el mes**. Aparecerá como un aviso bajo esos meses en la vista anual, sin asignarle un día inventado.
 
-Las fichas de actividades muestran únicamente el aviso **«Avisadnos por el grupo de WhatsApp»**. La app no recoge inscripciones ni envía mensajes: cada familia utiliza su grupo habitual para avisar al equipo.
+Los torneos muestran **«Avisadnos por WhatsApp si queréis venir»**, las charlas **«Avisadnos por WhatsApp si queréis asistir»** y las quedadas **«Avisadnos por el grupo de WhatsApp»**. Las giras/tour, Super Drafts, periodo de fichajes e inicio de temporada no muestran aviso. La app no recoge inscripciones ni envía mensajes: cada familia utiliza WhatsApp para contactar con el equipo.
 
 Las fechas con hora se muestran en la zona de Madrid.
 
+## PDF de los torneos
+
+Dentro de una publicación de **Torneos**, pulsa **Adjuntar PDF** y elige el archivo. Puedes cambiar el nombre que verán las familias. Se admiten hasta 10 PDF por torneo, de un máximo de 10 MB cada uno. Pulsa **Guardar y publicar** para que aparezcan los botones **Ver PDF** junto a la información del torneo, tanto en Inicio como en su ficha o archivo. Los PDF de borradores solo los puede abrir Antonio con su sesión iniciada. Para retirar un PDF, pulsa su botón de quitar y guarda.
+
+## HUNDRA Performance
+
+Inicio incluye un acceso **Mi planning físico** al formulario de Typeform de HUNDRA Performance. Sirve tanto para activar el servicio como para volver a medir cuando toca actualizar el planning. El formulario se abre en otra pestaña.
+
 ## Reconocimiento mensual
 
-El jugador del mes muestra el mismo aviso para que os contacte por el grupo de WhatsApp. No hay botón de solicitar regalo ni mensajes privados preparados.
+El jugador del mes muestra **«Reclama tu regalo por WhatsApp»**. Es un aviso informativo; la familia utiliza WhatsApp para contactar con vosotros.
 
 ## Novedades mensuales
 
